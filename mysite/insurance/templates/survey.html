@@ -1,0 +1,1378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<!-- saved from url=(0055)http://www.lia-roc.org.tw/index02/retire/insurance4.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="IE=7,8,9,10,11" http-equiv="X-UA-Compatible">
+
+</head><body><font face="微軟正黑體">&lt;
+
+<title>保障缺口分析</title>
+
+
+<!--
+<META content="IE=7.0000" http-equiv="X-UA-Compatible">
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+<meta http-equiv="expires" content="0">
+-->
+
+<style type="text/css">
+<!--
+.style16 {
+	font-size: 18px;
+	font-weight: bold;
+}
+.styleTitle {
+	font-size: 36px; 
+	color: #0066FF;
+	font-weight: bold;
+	font-family: "標楷體"
+}
+.style18 {font-size: 18px; font-family: "細明體"; }
+.style24 {
+	font-weight: bold;
+	font-family: "細明體";
+	color: #3366CC;
+	background-color: #CCFFCC;
+	font-size: 22px;
+}
+.BG_color {background-color: #FFFF99;}
+.BG_color2 {background-color: #CCFFCC;}
+.BG_color3 {background-color: #CCCCFF;}
+.BG_color4 {background-color: #FFCCFF;}
+.BG_color5 {background-color: #99CCFF;}
+.Button {
+	font-family: "細明體";
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	line-height: normal;
+	word-spacing: 2mm;
+	letter-spacing: 1mm;
+	white-space: normal;
+}
+.Number {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: right;
+	vertical-align: middle;
+}
+.style28 {color: #FF0000}
+.style31 {color: #9900CC}
+.style32 {color: #FF00FF}
+.style33 {color: #003399}
+body {
+	background-image: url('images/bg4.gif');
+}
+.life {
+	font-size: 22px;
+	font-style: normal;
+	font-weight: bold;
+	color: #FF00FF;
+	background-color: #FFCCFF;
+}
+.already {
+	font-size: 22px;
+	font-weight: bold;
+	color: #003399;
+	background-color:#99CCFF;
+}
+.Red_Font {font-size: 18px; font-family: "細明體"; color: #FF0000;}
+.laborer_font {
+	font-size: 16px;
+	font-family: "細明體";
+	vertical-align: middle;
+}
+.style34 {font-size: 18px}
+.style35 {background-color: #CCCCFF; font-size: 18px; }
+.style36 {background-color: #FFCCFF; font-size: 18px; }
+.style37 {background-color: #99CCFF; font-size: 18px; }
+.style38 {color: #666666}
+.style40 {color: #FF00FF; font-weight: bold; }
+.style41 {
+	color: #0000FF;
+	font-weight: bold;
+}
+-->
+</style>
+
+<!----------JavaScript開始資料收集 ------------->
+<script language="JavaScript">
+function computeForm()
+{
+/********************************
+ * 以下為結果分析表中的現金需求 *
+ ********************************/
+ 
+ /*==================
+    第２題：幾個小孩
+   ==================*/	
+   
+ 
+obj=document.form2;  
+/*
+var aj="";
+*/	
+
+var aaj=document.form2.child.length;
+var aj=0;
+for (i=0;i<aaj;i++)
+	{
+	if (document.getElementsByName("child")[i].checked)  //查找有幾個小孩
+		{
+		aj=document.getElementsByName("child")[i].value;break
+		}
+	}
+document.form22.total_child.value=aj;  //將查找幾個小孩的值傳給結果表單(form22)中的小孩(total_child)欄位
+
+
+
+ /*==================
+    第４題：教育費用
+   ==================*/
+ 
+
+ 
+if(aj == "0")  //無小孩則教育程度、教育費用及總教育費為０
+	{
+	var bj = 0;
+	document.form4.edu_cost.value=bj=0;
+	document.form22.total_edu_cost.value=bj=0;
+	document.form3.edu.value=0;
+	}
+else
+	{
+	obj=document.form4;  //有小孩計算教育費用
+	var bj=0;
+	var bbj=document.form4.edu_cost.length;
+	for (i=0;i<bbj;i++)
+		{
+		if (document.getElementsByName("edu_cost")[i].checked)
+			{
+			bj=document.getElementsByName("edu_cost")[i].value;break
+			}
+		}
+	document.form22.total_edu_cost.value=bj;  //查找到的教育費用的值傳給結果表單(form22)中的教育費用多少萬(total_edu_cost)欄位		
+	}
+
+	
+ /*==================
+    第５題：房屋貸款
+   ==================*/	
+var cj=0;
+var obj=document.form6.house_cost.length;  //設一個變數其值等於 form6 中項目的個數
+for (i=0;i<obj;i++)  
+	{
+	if(document.getElementsByName("house_cost")[i].checked)  //查找在同一個 Name 下 arry 中那一個 radio 鈕被按下
+		{
+		 cj=document.getElementsByName("house_cost")[i].value;break  //將被按下 radio 鈕的值傳給變數 cj
+		 }
+	}
+document.form22.total_house_cost.value=cj;  //查找到的貸款金額值(cj)傳給結果表單(form22)中的房屋貸款多少萬(total_house_cost)欄位
+
+ /*==================
+    第６題：房屋租金
+   ==================*/	
+var dj=0.0;  //dj 為浮點數
+var hr=0.0;
+var obj=document.form7.house_rent.length;
+for (i=0;i<obj;i++)
+	{
+	if (document.getElementsByName("house_rent")[i].checked)
+		{
+		dj=document.getElementsByName("house_rent")[i].value;break
+		}
+	}
+document.form22.total_house_rent.value=hr=(dj * 12 );	//每個月的房租（結果表單中為全年費用，故須乘以 12）
+
+ /*=======================
+    第７題：預計租屋幾年？
+   =======================*/	
+var obj=document.form8.how_long.length;
+var ej=0;
+if(dj == 0)  //若無租屋，則第７題預計會租幾年必須等於 0
+	{
+	document.form22.total_how_long.value=ej=0;
+	}
+if(dj != 0)  //若有租屋，則須計算第７題預計會租幾年
+	{
+//	var obj=document.form8;
+	var ej=0;
+	for (i=0;i<obj;i++)
+		{
+		if (document.getElementsByName("how_long")[i].checked)
+			{
+			ej=document.getElementsByName("how_long")[i].value;break
+			}
+		}
+	document.form22.total_how_long.value=ej;
+	}
+
+ /*======================
+    第８題：自己的喪葬費
+   ======================*/	
+   
+   
+obj=document.form9; 
+var fj=0;
+var ffj=document.form9.death_cost.length;
+for (i=0;i<ffj;i++)
+	{
+	if (document.getElementsByName("death_cost")[i].checked)
+		{
+		fj=document.getElementsByName("death_cost")[i].value;break
+		}
+	}
+document.form22.total_death_cost.value=fj;	
+
+	
+
+ /*====================
+    第９題：未清償借款
+   ====================*/	
+obj=document.form10;  
+var gj=0;
+var ggj=document.form10.credit.length;
+for (i=0;i<ggj;i++)
+	{
+	if (document.getElementsByName("credit")[i].checked)
+		{
+		gj=document.getElementsByName("credit")[i].value;break
+		}
+	}
+document.form22.total_credit.value=gj;	
+
+ /*========================================
+    第１０題：其他費用(為家庭準備的應急費)
+   ========================================*/	
+obj=document.form11;  
+var hj=0;
+var hhj=document.form11.urgent_cost.length;
+for (i=0;i<hhj;i++)
+	{
+	if (document.getElementsByName("urgent_cost")[i].checked)
+		{
+		hj=document.getElementsByName("urgent_cost")[i].value;break
+		}
+	}
+document.form22.other_spend.value=hj;	
+// 以上為結果分析表中現金需求
+
+/****************************
+ * 以下為結果分析表生活費用 *
+ ****************************/
+ 
+  /*========================
+     第１１題：每月家庭開銷
+    ========================*/	
+obj=document.form12;  
+var ij=0;
+var iij=document.form12.family_cost.length;
+for (i=0;i<iij;i++)
+	{
+	if (document.getElementsByName("family_cost")[i].checked)
+		{
+		ij=document.getElementsByName("family_cost")[i].value;break
+		}
+	}
+document.form22.total_family_cost.value=ij;	
+
+ /*===============================
+    第1２題：死後遺產留給家人幾年
+   ===============================*/	
+obj=document.form13;  
+var jj=0;
+var jjj=document.form13.legacy_year.length;
+for (i=0;i<jjj;i++)
+	{
+	if (document.getElementsByName("legacy_year")[i].checked) 
+		{
+		jj=document.getElementsByName("legacy_year")[i].value;break
+		}
+	}
+document.form22.total_legacy_year.value=jj;	
+
+ /*==================
+    第１３題：其他年收入
+   ==================*/	
+obj=document.form14;
+var kj=0;
+var kkj=document.form14.other_income.length;
+for (i=0;i<kkj;i++)
+	{
+	if (document.getElementsByName("other_income")[i].checked)
+		{
+		kj=document.getElementsByName("other_income")[i].value;break
+		}
+	}
+document.form22.total_other_income.value=kj;	
+
+ /*======================
+    第１９題：配偶年收入
+   ======================*/	
+obj=document.form20;  
+var lj=0;
+var llj=document.form20.income_year.length;
+for (i=0;i<llj;i++)
+	{
+	if (document.getElementsByName("income_year")[i].checked)
+		{
+		lj=document.getElementsByName("income_year")[i].value;break
+		}
+	}
+document.form22.total_income_year.value=lj;
+//以上為結果分析表單中生活費用
+
+/**********************************
+ * 以下為結果分析表單中已有的準備 *
+ **********************************/
+
+  /*===============================================
+     第１４、１５題：社會保險給付(公、勞保投保薪資)
+   =================================================*/	
+/*
+ibo=document.form15.official_salary;
+ibj=document.form15.labor_salary;
+var osj=0;
+var mj=0;
+var mmj=0;
+osj=ibo.options[ibo.selectedIndex].value;
+mmj=ibj.options[ibj.selectedIndex].value;
+if(osj == 0 && mmj != 0)
+    { 
+    document.form22.pay_society.value=mj=Math.round(mmj * 45 / 10000);	//勞工以最高45基數計算
+	}
+if(osj != 0 && mmj == 0)
+    {
+	document.form22.pay_society.value=mj=Math.round(osj * 36 / 10000);  //公教以最高36個月計算
+	}
+if(osj != 0 && mmj != 0)
+    {
+	alert("請依您的身份在第14題或第15題擇1作答");
+	}
+*/
+ /*======================
+    第１６題：終身保險
+   ======================*/	
+obj=document.form16;  
+var nj=0;
+var bb=document.form16.life_insurance.length;  //設一個變數其值等於 form16 中項目的個數
+for (i=0;i<bb;i++)  
+	{
+	if(document.getElementsByName("life_insurance")[i].checked)  //查找在同一個 Name 下 arry 中那一個 radio 鈕被按下
+		{
+		 nj=document.getElementsByName("life_insurance")[i].value;break  //將被按下 radio 鈕的值傳給變數 nj
+		 }
+	}
+document.form22.pay_life.value=nj;  //再將變數 nj 的值傳給結果分析表對應的欄位	
+
+ /*======================
+     第１７題：銀行存款
+   ======================*/	
+obj=document.form18;  
+var pj=0;
+var bd=document.form18.bank_save.length;
+for (i=0;i<bd;i++) 
+	{
+	if(document.getElementsByName("bank_save")[i].checked)
+		{
+		 pj=document.getElementsByName("bank_save")[i].value;break
+		 }
+	}
+document.form22.total_bank_save.value=pj;	
+
+ /*======================
+     第１８題：投資
+   ======================*/	
+obj=document.form19;  
+var qj=0;
+for (i=0;i<10;i++)
+	{
+	if(document.getElementsByName("invest")[i].checked)
+		{
+		 qj=document.getElementsByName("invest")[i].value;break
+		 }
+	}
+document.form22.total_invest.value=qj;	
+//以上為結果分析表中已有的準備
+
+/****************
+ * 您需要的現金 *
+ ****************/
+var nc=0;
+nc=((parseInt(aj) * parseInt(bj)) + parseInt(cj) + (hr * ej) + parseInt(fj) + parseInt(gj) + parseInt(hj));
+document.form22.you_need.value = nc;
+
+/**********
+ * 生活費 *
+ **********/
+var lc=0;
+lc=(((parseFloat(ij) *12) - parseInt(lj) - parseInt(kj)) * parseInt(jj));
+if(lc<0)
+	{
+	document.form22.your_spend.value=lc=0;
+	}
+else
+	{
+	document.form22.your_spend.value=lc;
+	}
+
+/**********
+ * 已準備 *
+ **********/
+ /*
+ var al=0;
+al=(parseInt(mj) + parseInt(nj) + parseInt(pj) + parseInt(qj));
+document.form22.you_have.value = al;
+ */
+ 
+ 
+var al=0;
+al=(parseInt(nj) + parseInt(pj) + parseInt(qj));
+document.form22.you_have.value = al;
+
+/****************
+ * 家庭保障需求 *
+ ****************/
+var nf=0;
+nf=(parseInt(nc) + parseInt(lc) - parseInt(al));
+if(nf<0)
+	{
+	document.form22.total_family_need.value=nc=0;
+	}
+else
+	{
+	document.form22.total_family_need.value=nf;
+	}
+}
+
+//以下為清除選擇回復預設值的函式(暫未使用)
+function reset_it()
+{
+document.form1.reset();
+document.form2.reset();
+document.form3.reset();
+document.form4.reset();
+// document.form5.reset();
+document.form6.reset();
+document.form7.reset();
+document.form8.reset();
+document.form9.reset();
+document.form10.reset();
+document.form11.reset();
+document.form12.reset();
+document.form13.reset();
+document.form14.reset();
+//document.form15.reset();
+document.form16.reset();
+// document.form17.reset();
+document.form18.reset();
+document.form19.reset();
+document.form20.reset();
+document.form22.reset();
+}
+</script>
+
+
+
+</font>
+<h1 align="center" class="styleTitle"><font face="微軟正黑體">保障缺口分析</font></h1>
+<p align="center" class="styleTitle">
+<font face="微軟正黑體">
+<img src="./保障缺口分析_files/house7.gif" width="376" height="36"></font></p>
+<font face="微軟正黑體">
+<!--==========
+     第１題
+   ==========-->
+</font>
+<form name="form1" action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post">
+<table width="755" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">1</font></td>
+      <td colspan="3"><font face="微軟正黑體">請問你結婚了嗎？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="marry" type="radio" value="marryed" checked="">已婚</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="marry" type="radio" value="nomarry">未婚</font></td>
+      <td width="439"><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第２題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form2">
+  <table width="755" border="0" align="center">
+	<tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">2</font></td>
+      <td colspan="5"><font face="微軟正黑體">請問你有幾位小孩？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td colspan="2"><font face="微軟正黑體"><input name="child" type="radio" value="0" checked="">無<strong><font color="#FF00FF">（跳答第5題）</font></strong></font></td>
+      <td colspan="3"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="child" type="radio" value="1">
+      1位</font></td>
+      <td width="138"><font face="微軟正黑體"><input name="child" type="radio" value="2">
+      2位</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="child" type="radio" value="3">
+      3位</font></td>
+      <td width="150"><font face="微軟正黑體"><input name="child" type="radio" value="4">
+      4位（含）以上</font></td>
+      <td width="143"><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第３題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form3">
+<table width="754" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">3</font></td>
+      <td colspan="5"><font face="微軟正黑體">你打算培養小孩到何種教育程度？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="edu" type="radio" value="senior">高中（職）</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="edu" type="radio" value="university">大學</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="edu" type="radio" value="institute">碩士</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="edu" type="radio" value="doctor">博士</font></td>
+      <td width="150"></td>
+    </tr>
+</tbody></table>
+</form>
+<font face="微軟正黑體">
+<!--==========
+     第３、４題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form4">
+  <table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18">
+      <td width="18"><font face="微軟正黑體">4</font></td>
+      <td colspan="9"><font face="微軟正黑體">你預估培育一位小孩到上述的教育程度約需多少花費（含才藝班、安親班等）？</font></td>
+    </tr>
+    <tr class="style18">
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td colspan="9"><span class="Red_Font"><font face="微軟正黑體">（提示：公立小學至大學約200萬，國外研究所另外加約300萬元）</font></span></td>
+    </tr>
+    <tr class="style18">
+      <td width="18"><font face="微軟正黑體">　</font></td>
+       <td width="140"><font face="微軟正黑體"><input type="radio" value="125" name="edu_cost">150萬以下</font></td>
+    <td width="140"><font face="微軟正黑體"><input type="radio" value="200" name="edu_cost">151 - 250萬</font></td>
+   
+    <td width="140"><font face="微軟正黑體"><input type="radio" value="275" name="edu_cost">251 - 300萬  
+	</font> </td>
+    <td width="140"><font face="微軟正黑體"><input type="radio" value="325" name="edu_cost">301 - 350萬  
+	</font> </td>
+    <td width="5"><font face="微軟正黑體">　</font></td>
+    <td width="5"><font face="微軟正黑體">　</font></td></tr>
+  <tr class="style18">
+    <td width="18"><font face="微軟正黑體">　</font></td>
+    <td width="140"><font face="微軟正黑體"><input type="radio" value="375" name="edu_cost">351 - 400萬  
+	</font> </td>
+    <td width="140"><font face="微軟正黑體"><input type="radio" value="425" name="edu_cost">401 - 450萬  
+	</font> </td>
+    <td width="140"><font face="微軟正黑體"><input type="radio" value="475" name="edu_cost">451 - 500萬  
+	</font> </td>
+    <td colspan="3"><font face="微軟正黑體"><input type="radio" value="525" name="edu_cost">501萬以上</font></td>
+
+    </tr>
+  </tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第５題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form6">
+<table width="753" border="0" align="center">    
+	<tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">5</font></td>
+      <td colspan="6"><font face="微軟正黑體">請問你是否有房屋貸款？總額多少？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_cost" type="radio" value="0" checked="">無貸款</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_cost" type="radio" value="50">100萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_cost" type="radio" value="150">101 - 200萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_cost" type="radio" value="250">201 - 300萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_cost" type="radio" value="350">301 - 400萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+	<tr class="style18">
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="450">401 - 500萬</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="550">501 - 600萬</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="650">601 - 700萬</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="750">701 -800萬</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="850">801 - 900萬</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+	</tr>
+	<tr class="style18">
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="950">901 - 1000萬</font></td>
+	  <td><font face="微軟正黑體"><input name="house_cost" type="radio" value="1050">1001萬以上</font></td>
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+	</tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第６題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form7">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">6</font></td>
+      <td colspan="9"><font face="微軟正黑體">請問你是否有租賃房屋？每個月的房租是多少？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td colspan="2"><font face="微軟正黑體"><input name="house_rent" type="radio" value="0" checked="">無租屋<strong><font color="#FF00FF">（跳答第８題）</font></strong></font></td>
+      <td width="140"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體">　</font></td>
+	  <td width="140"><font face="微軟正黑體">　</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+	<tr class="style18">
+	  <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_rent" type="radio" value="0.5">1萬元以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_rent" type="radio" value="1.5">1.1 - 2萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_rent" type="radio" value="2.5">2.1 - 3萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="house_rent" type="radio" value="3.5">3.1 - 4萬</font></td>
+      <td colspan="2"><font face="微軟正黑體"><input name="house_rent" type="radio" value="4.5">4.1 - 5萬</font></td>
+	</tr>
+	<tr class="style18">
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td><font face="微軟正黑體"><input name="house_rent" type="radio" value="5.5">5.1 - 6萬</font></td>
+	  <td><font face="微軟正黑體"><input name="house_rent" type="radio" value="6.5">6.1萬以上</font></td>
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td><font face="微軟正黑體">　</font></td>
+	  <td colspan="2"><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第７題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form8">
+<table width="751" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="16"><font face="微軟正黑體">7</font></td>
+      <td colspan="6"><font face="微軟正黑體">你預計還會續租多久？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="16"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="how_long" type="radio" value="1">1年以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="how_long" type="radio" value="2">2年</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="how_long" type="radio" value="3">3年</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="how_long" type="radio" value="4">4年</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="how_long" type="radio" value="5">5年</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體"><input name="how_long" type="radio" value="6">6年以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第８題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form9">
+  <table width="752" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18">
+      <td width="17"><font face="微軟正黑體">8</font></td>
+      <td colspan="6"><font face="微軟正黑體">請問你希望為自己準備多少喪葬費用？</font></td>
+    </tr>
+    <tr class="style18">
+      <td width="17"></td>
+      <td width="140"><font face="微軟正黑體"><input name="death_cost" type="radio" value="35" checked="">40萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="death_cost" type="radio" value="45">41 - 50萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="death_cost" type="radio" value="55">51 - 60萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="death_cost" type="radio" value="65">61 - 70萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="death_cost" type="radio" value="75">71 - 80萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td></td>
+      <td><font face="微軟正黑體"><input name="death_cost" type="radio" value="85">81萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+  </tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第９題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form10">
+  <table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">9</font></td>
+      <td colspan="6"><font face="微軟正黑體">你有多少其他尚未清償的借款？（如：會錢、信用卡、汽車貸款等）</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="credit" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="credit" type="radio" value="25">50萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="credit" type="radio" value="75">51 - 100萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="credit" type="radio" value="125">101 - 150萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="credit" type="radio" value="175">151 - 200萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體"><input name="credit" type="radio" value="225">200萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+  </tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１０題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form11">
+  <table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18">
+      <td width="18"><font face="微軟正黑體">10</font></td>
+      <td colspan="6"><font face="微軟正黑體">你希望為家庭準備多少應急費用？（如：家人傷病費、汽修費、房屋修繕等）</font></td>
+    </tr>
+    <tr class="style18">
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="15">20萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="50">21 - 100萬</font></td>
+ 
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="125">101 - 150萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="200">151 - 300萬</font></td>
+     
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="350">301 - 400萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="450">401 - 500萬</font></td>
+      <td><font face="微軟正黑體"><input name="urgent_cost" type="radio" value="550">501萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+  </tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１１題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form12">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">11</font></td>
+      <td colspan="6"><font face="微軟正黑體">你每個月家庭的開銷（如：食、衣、住、行、稅、交際、父母孝養費、有小孩加褓母費等）</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="0.5" checked="">1萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="2.0">1.1 - 3萬</font></td>
+ 
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="3.5">3.1 - 4萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="4.5">4.1 - 5萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td></td>
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="6.0">5.1 - 7萬</font></td>
+   
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="7.5">7.1 - 8萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="family_cost" type="radio" value="9.0">8.1 - 10萬</font></td>
+      <td><font face="微軟正黑體"><input name="family_cost" type="radio" value="10.5">10萬以上</font></td>
+      <td></td>
+    </tr>
+    
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１２題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form13">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">12</font></td>
+      <td colspan="6"><font face="微軟正黑體">你希望身後為家人留多少年的生活費？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="legacy_year" type="radio" value="3" checked="">5年以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="legacy_year" type="radio" value="8">6 - 10年</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="legacy_year" type="radio" value="13">11 - 15年</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="legacy_year" type="radio" value="18">16 - 20年</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="legacy_year" type="radio" value="23">21 - 25年</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體"><input name="legacy_year" type="radio" value="28">26年以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１３題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form14">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">13</font></td>
+      <td colspan="6"><font face="微軟正黑體">請問除了工作收入外，你是否還有其他年收入（如：利息、租金、稿費、合夥生意等）？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="other_income" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="other_income" type="radio" value="15">20萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="other_income" type="radio" value="25">21 - 30萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="other_income" type="radio" value="35">31 - 40萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="other_income" type="radio" value="45">41 - 50萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td></td>
+      <td><font face="微軟正黑體"><input name="other_income" type="radio" value="55">51萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１４、１５題
+   ==========-->
+
+<!--
+</font>
+<form action="" method="post" name="form15">
+<table width="753" border="0" align="center">
+    <tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">14</font></td>
+      <td width="725"><font face="微軟正黑體">你目前的公保投保月薪資總額每月為多少？（以本俸或年功俸計）</font><span class="Red_Font"><font face="微軟正黑體">
+        <select name="official_salary" class="laborer_font">
+          <option value="0" selected> --- 請選擇 ---</option>
+          <option value="0">無</option>
+          <option value="10945">10,945 元以下</option>
+          <option value="11390">11,390 元</option>
+          <option value="11830">11,830 元</option>
+          <option value="12270">12,270 元</option>
+          <option value="12715">12,715 元</option>
+          <option value="13155">13,155 元</option>
+          <option value="13600">13,600 元</option>
+          <option value="14225">14,225 元</option>
+          <option value="14850">14,850 元</option>
+          <option value="15480">15,480 元</option>
+          <option value="16105">16,105 元</option>
+          <option value="16735">16,735 元</option>
+          <option value="17360">17,360 元</option>
+          <option value="17985">17,985 元</option>
+          <option value="18615">18,615 元</option>
+          <option value="19240">19,240 元</option>
+          <option value="19870">19,870 元</option>
+          <option value="20495">20,495 元</option>
+          <option value="21120">21,120 元</option>
+          <option value="21750">21,750 元</option>
+          <option value="22375">22,375 元</option>
+          <option value="23005">23,005 元</option>
+          <option value="23945">23,945 元</option>
+		  <option value="24885">24,885 元</option>
+		  <option value="25825">25,825 元</option>
+		  <option value="26765">26,765 元</option>
+		  <option value="27705">27,705 元</option>
+		  <option value="28645">28,645 元</option>
+		  <option value="29585">29,585 元</option>
+		  <option value="30525">30,525 元</option>
+		  <option value="31470">31,470 元</option>
+		  <option value="32410">32,410 元</option>
+		  <option value="33350">33,350 元</option>
+		  <option value="34290">34,290 元</option>
+		  <option value="36795">36,795 元</option>
+		  <option value="38050">38,050 元</option>
+		  <option value="39305">39,305 元</option>
+		  <option value="40560">40,560 元</option>
+		  <option value="41815">41,815 元</option>
+		  <option value="43065">43,065 元</option>
+		  <option value="44320">44,320 元</option>
+		  <option value="45575">45,575 元</option>
+		  <option value="46830">56,830 元</option>
+		  <option value="48710">48,710 元</option>
+		  <option value="49335">49,335 元</option>
+		  <option value="49965">49,965 元</option>
+        </select>
+      </font>
+      </span></td>
+    </tr>
+    <tr class="style18"> 
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體"><span class="style40">（公教人員請選答）</span></font></td>
+    </tr>
+    <tr class="style18"> 
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+
+    <tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">15</font></td>
+      <td width="725"><font face="微軟正黑體">你目前的勞保投保月薪資總額每月為多少？</font><span class="Red_Font"><font face="微軟正黑體">
+        <select name="labor_salary" class="laborer_font">
+          <option value="0" selected> --- 請選擇 ---</option>
+          <option value="0">無</option>
+          <option value="19047">19,047 元以下</option>
+        
+          <option value="19200">19,047 - 19,200 元</option>
+          <option value="20100">19,201 - 20,100 元</option>
+          <option value="21000">20,101 - 21,000 元</option>
+          <option value="21900">21,001 - 21,900 元</option>
+          <option value="22800">21,901 - 22,800 元</option>
+          <option value="24000">22,801 - 24,000 元</option>
+          <option value="25200">24,001 - 25,200 元</option>
+          <option value="26400">25,201 - 26,400 元</option>
+          <option value="27600">26,401 - 27,600 元</option>
+          <option value="28800">27,601 - 28,800 元</option>
+          <option value="30300">28,801 - 30,300 元</option>
+          <option value="31800">30,301 - 31,800 元</option>
+          <option value="33300">31,801 - 33,300 元</option>
+          <option value="34800">33,301 - 34,800 元</option>
+          <option value="36300">34,801 - 36,300 元</option>
+          <option value="38200">36,301 - 38,200 元</option>
+          <option value="40100">38,201 - 40,100 元</option>
+          <option value="42000">40,101 - 42,000 元</option>
+          <option value="43900">42,001 - 43,900 元</option>
+          <option value="45800">43,901 元以上</option>
+        </select>
+      </font>
+      </span></td>
+    </tr>
+    <tr class="style18"> 
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體"><span class="style41">（一般勞工請選答）</span></font></td>
+    </tr>
+</table>
+</form>
+
+<font face="微軟正黑體">
+-->
+
+<!--==========
+     第１４題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form16">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">14</font></td>
+      <td colspan="6"><font face="微軟正黑體">你目前擁有多少一般身故的保障？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="50">100萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="150">101 - 200萬  
+		</font> </td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="250">201 - 300萬  
+		</font> </td>  
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="350">301 - 400萬  
+		</font> </td>  
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"><font face="微軟正黑體">　</font></td>          
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="450">401 - 500萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="550">501 - 600萬  
+		</font> </td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="650">601 - 700萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="750">701 - 800萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="life_insurance" type="radio" value="850">801 - 900萬</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體"><input name="life_insurance" type="radio" value="950">901 - 1000萬</font></td>
+      <td><font face="微軟正黑體"><input name="life_insurance" type="radio" value="1050">1001萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１５題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form18">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">15</font></td>
+      <td colspan="6"><font face="微軟正黑體">你目前約有多少銀行存款？</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="15">30萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="40">31 - 50萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="75">51 - 100萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="125">101 - 150萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="175">151 - 200萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="250">201 - 300萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="350">301 - 400萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="450">401 - 500萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="bank_save" type="radio" value="550">501萬以上</font></td>
+	  <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１６題
+   ==========-->
+</font>
+<form action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post" name="form19">
+<table width="753" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">16</font></td>
+      <td colspan="6"><font face="微軟正黑體">你目前從事投資的金額約為多少？（如：股票、基金、債券等）</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="15">30萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="40">31 - 50萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="75">51 - 100萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="125">101 - 150萬</font></td>
+      <td width="5"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="175">151 - 200萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="250">201 - 300萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="350">301 - 400萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="450">401 - 500萬</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="invest" type="radio" value="550">501萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!--==========
+     第１７題
+   ==========-->
+</font>
+<form name="form20" action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm" method="post">
+<table width="758" border="0" align="center">
+    <tbody><tr bgcolor="#e6ebf1" class="style18"> 
+      <td width="18"><font face="微軟正黑體">17</font></td>
+      <td colspan="5"><font face="微軟正黑體">你的配偶每年的收入大約是多少？</font><strong><font color="#FF0000" face="微軟正黑體">（已婚者請選答）</font></strong></td>
+    </tr>
+    <tr class="style18"> 
+      <td width="18"></td>
+      <td width="140"><font face="微軟正黑體"><input name="income_year" type="radio" value="0" checked="">無</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="income_year" type="radio" value="20">40萬以下</font></td>
+      <td width="140"><font face="微軟正黑體"><input name="income_year" type="radio" value="50">41 - 60萬  
+		</font> </td>
+      <td width="140"><font face="微軟正黑體"><input name="income_year" type="radio" value="70">61 - 80萬</font></td>
+      <td width="154"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr class="style18">
+      <td></td>
+      <td><font face="微軟正黑體"><input name="income_year" type="radio" value="90">81 - 100萬  
+		</font> </td>
+      <td><font face="微軟正黑體"><input name="income_year" type="radio" value="125">101 - 150萬</font></td>
+      <td><font face="微軟正黑體"><input name="income_year" type="radio" value="175">151 - 200萬</font></td>
+      <td><font face="微軟正黑體"><input name="income_year" type="radio" value="225">201萬以上</font></td>
+      <td><font face="微軟正黑體">　</font></td>
+    </tr>
+</tbody></table>
+</form>
+
+<font face="微軟正黑體">
+
+<!-----以下為分析結果表單-------->
+</font>
+<p><font face="微軟正黑體">　</font></p>
+<form name="form22" method="post" action="http://www.lia-roc.org.tw/index02/retire/insurance4.htm">
+  <table width="734" border="0" align="center">
+    <tbody><tr>
+      <td width="231" class="BG_color3" align="center">
+		<font color="#0000FF" face="微軟正黑體"><b>
+      現金需求</b></font></td>
+      <td width="253" class="BG_color4" align="center">
+		<font color="#0000FF" face="微軟正黑體"><b>
+      生活費用</b></font></td>
+      <td width="236" class="BG_color5" align="center">
+		<font color="#0000FF" face="微軟正黑體"><b>
+      已有的準備</b></font></td>
+    </tr>
+  </tbody></table>
+  <table width="737" border="0" align="center">
+    <tbody><tr valign="middle">
+      <td width="141" class="BG_color3"><span class="style16">
+		<font size="3" face="微軟正黑體">住宅費用</font></span></td>
+      <td width="88" valign="middle" class="style35"><font face="微軟正黑體">　</font></td>
+      <td width="129" class="style36"><span class="BG_color4"><strong>
+      <font size="3" face="微軟正黑體">家庭基本生活費</font></strong></span></td>
+      <td width="118" class="style36"><span class="BG_color4"><strong>
+      <font face="微軟正黑體" size="2">
+	  <input name="total_family_cost" type="text" class="Number" size="6" maxlength="5"></font><font face="微軟正黑體"><font size="3">萬</font><font size="2">x12</font></font></strong></span></td>
+      <td class="style37" width="148"><span class="BG_color5"><strong>
+      <font size="3" face="微軟正黑體">商業保險保障額度</font></strong></span></td>
+      <td class="style37" width="87"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="pay_life" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+
+	  <!--
+	  <td width="148" class="style37"><span class="BG_color5"><strong>
+      <font size="3" face="微軟正黑體">社會保險保障金額</font></strong></span></td>
+      <td width="87" class="style37"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="pay_society" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+	  -->
+    </tr>
+    <tr valign="middle">
+      <td class="BG_color3 style34" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">&nbsp; 房屋貸款總額</font></strong></span></td>
+      <td valign="middle" class="BG_color3" width="88"><span class="style34"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_house_cost" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style36" width="129"><span class="BG_color4"><strong>
+      <font size="3" face="微軟正黑體">配偶的工作收入</font></strong></span></td>
+      <td class="style36" width="118"><span class="BG_color4"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_income_year" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style37" width="148"><span class="BG_color5"><strong>
+      <font size="3" face="微軟正黑體">銀行存款</font></strong></span></td>
+      <td class="style37" width="87"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_bank_save" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      
+	  <!--
+	  <td class="style37" width="148"><span class="BG_color5"><strong>
+      <font size="3" face="微軟正黑體">商業保險保障額度</font></strong></span></td>
+      <td class="style37" width="87"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="pay_life" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      -->
+	</tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">&nbsp; 房租費用：一年</font></strong></span></td>
+      <td valign="middle" class="style35" width="88"><span class="BG_color3"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_house_rent" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style36" width="129"><span class="BG_color4"><strong>
+      <font size="3" face="微軟正黑體">其他年收入</font></strong></span></td>
+      <td class="style36" width="118"><span class="BG_color4"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_other_income" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style37" width="148"><span class="BG_color5"><strong>
+      <font size="3" face="微軟正黑體">投資金額</font></strong></span></td>
+      <td class="style37" width="87"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_invest" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+
+
+      <!--
+	  <td class="style37" width="148"><span class="BG_color5"><strong>
+	  <font size="3" face="微軟正黑體">銀行存款</font></strong></span></td>
+      <td class="style37" width="87"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_bank_save" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      -->
+
+    </tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">&nbsp; 預計續租</font></strong></span></td>
+      <td valign="middle" class="style35" width="88"><span class="BG_color3"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_how_long" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">年</font></strong></span></td>
+      <td class="style36" width="129"><span class="BG_color4"><strong>
+      <font size="3" face="微軟正黑體">生活費準備年數</font></strong></span></td>
+      <td class="style36" width="118"><span class="BG_color4"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_legacy_year" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">年</font></strong></span></td>
+      
+	  <td class="style37" width="148"><span class="BG_color5"><strong>
+	  <font size="3" face="微軟正黑體"> </font></strong></span></td>
+      <td class="style37" width="87"><span class="BG_color5"><strong>
+      <font face="微軟正黑體" size="2">
+      
+	</font></strong></span></td></tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">教育費用</font></strong></span></td>
+      <td valign="middle" class="style35" width="88"><font face="微軟正黑體">　</font></td>
+      <td class="style36" width="129"><font face="微軟正黑體">　</font></td>
+      <td class="style36" width="118"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="148"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="87"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><div align="right"><strong>
+		<font size="3" face="微軟正黑體">&nbsp; </font><font face="微軟正黑體" size="2">
+            <input name="total_child" type="text" class="Number" size="5" maxlength="2"></font><font size="3" face="微軟正黑體">
+  小孩 x</font></strong></div></td>
+      <td valign="middle" class="style35" width="88"><span class="BG_color3"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_edu_cost" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style36" width="129"><font face="微軟正黑體">　</font></td>
+      <td class="style36" width="118"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="148"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="87"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">喪葬費用</font></strong></span></td>
+      <td valign="middle" class="style35" width="88"><span class="BG_color3"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_death_cost" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style36" width="129"><font face="微軟正黑體">　</font></td>
+      <td class="style36" width="118"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="148"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="87"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">尚未清償借款</font></strong></span></td>
+      <td valign="middle" class="style35" width="88"><span class="BG_color3"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="total_credit" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style36" width="129"><font face="微軟正黑體">　</font></td>
+      <td class="style36" width="118"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="148"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="87"><font face="微軟正黑體">　</font></td>
+    </tr>
+    <tr valign="middle">
+      <td class="style35" width="141"><span class="BG_color3"><strong>
+      <font size="3" face="微軟正黑體">應急準備</font></strong></span></td>
+      <td valign="middle" class="style35" width="88"><span class="BG_color3"><strong>
+      <font face="微軟正黑體" size="2">
+      <input name="other_spend" type="text" class="Number" size="6" maxlength="5"></font><font size="3" face="微軟正黑體">萬</font></strong></span></td>
+      <td class="style36" width="129"><font face="微軟正黑體">　</font></td>
+      <td class="style36" width="118"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="148"><font face="微軟正黑體">　</font></td>
+      <td class="style37" width="87"><font face="微軟正黑體">　</font></td>
+    </tr>
+  </tbody></table>
+  <table width="738" border="0" align="center">
+    <tbody><tr>
+      <td width="732" class="style24"><p align="center"><span class="style31">
+      <font size="3" face="微軟正黑體">你需要現金 </font>
+          <font face="微軟正黑體">
+          <input name="you_need" type="text" class="Number" size="6" maxlength="5"><font size="3">
+          萬</font></font></span><font size="3" face="微軟正黑體"> ＋ </font> <span class="style32">
+      <font size="3" face="微軟正黑體">生活費 </font>
+          <font face="微軟正黑體">
+          <input name="your_spend" type="text" class="Number" size="6" maxlength="5"><font size="3">
+          萬</font></font></span><font size="3" face="微軟正黑體"> － </font> <span class="style33">
+      <font size="3" face="微軟正黑體">已準備 </font>
+          <font face="微軟正黑體">
+          <input name="you_have" type="text" class="Number" size="6" maxlength="5"><font size="3">
+          萬</font></font></span><font size="3" face="微軟正黑體"> </font> </p>
+        <p align="center"><font size="3" face="微軟正黑體">＝ <span class="style28">家庭保障缺口尚不足</span>
+        </font> <span class="style28">
+          <font face="微軟正黑體">
+          <input name="total_family_need" type="text" class="Number" size="8" maxlength="5"></font><font size="3" face="微軟正黑體">
+      萬</font></span></p></td>
+    </tr>
+  </tbody></table>
+  <table width="669" border="0" align="center">
+    <tbody><tr>
+      <td width="112"><font face="微軟正黑體"><input name="Submit" type="button" class="Button" onclick="computeForm()" value="開始計算"></font></td>
+      <td width="547"><font face="微軟正黑體"><span class="style38">若須修正請直接更改要修正的題目選項再按一次開始計算即可</span></font></td>
+    </tr>
+  </tbody></table>
+  <p align="center">
+<font face="微軟正黑體">
+<!--清除重算鈕暫停使用   
+    <input type="button" name="Submit2" value="清除重算" onClick="reset_it()">
+-->	
+  </font>	
+  </p>
+</form>
+<p><font face="微軟正黑體">　</font></p>
+
+
+</body></html>
